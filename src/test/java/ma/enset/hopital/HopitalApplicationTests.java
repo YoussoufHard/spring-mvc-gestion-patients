@@ -1,10 +1,10 @@
-package ma.enset.springmvcgestionpatients;
+package ma.enset.hopital;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringMvcGestionPatientsApplicationTests {
+class HopitalApplicationTests {
 
 	@Test
 	void contextLoads() {
