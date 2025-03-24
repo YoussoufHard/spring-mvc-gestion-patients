@@ -47,7 +47,7 @@ spring.h2.console.enabled=true
 ```
 Capture de la base de données creer dans mysql apres l'execution
 
- ![Structure de la base de données](captures/img_1.png)
+ ![Structure de la base de données](captures/img.png)
 
 ### 3️⃣ Lancer l’application
 ```bash
@@ -90,9 +90,13 @@ Ou dans **IntelliJ**, exécuter la classe `HopitalApplication`.
 📌 Tutoriel : [📹 Partie 1](https://www.youtube.com/watch?v=jDm-q-jEbiA)
 
 ## Aperçu de l'interface
-Voici un aperçu de la page d'accueil du système :
+Voici un aperçu de la page d'accueil du système avant pagination:
 
-![Page d'accueil](/captures/img_2.png) 
+![Page d'accueil](/captures/img_1.png) 
+
+Voici un aperçu de la page d'accueil du système après pagination :
+
+![Page d'accueil paginé](/captures/img_2.png)
 ---
 
 ### 🎨 Partie 2 : Templates et validation
