@@ -97,6 +97,10 @@ Voici un aperçu de la page d'accueil du système avant pagination:
 Voici un aperçu de la page d'accueil du système après pagination :
 
 ![Page d'accueil paginé](/captures/img_2.png)
+
+Voici un aperçu de la page d'accueil du système avec l'option de Recherche:
+
+![Page d'accueil paginé](/captures/img_3.png)
 ---
 
 ### 🎨 Partie 2 : Templates et validation
