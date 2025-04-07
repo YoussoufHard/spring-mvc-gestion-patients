@@ -31,4 +31,10 @@ public String index(Model model,
         model.addAttribute("keyword", kw);
         return "patients";
     }
+
+    @GetMapping("/delete")
+    public String delete(long id, String keyword , String page){
+        patientRepository.deleteById(id);
+        return "redirect:/index?page="+page+"&keyword="+keyword;
+    }
 }

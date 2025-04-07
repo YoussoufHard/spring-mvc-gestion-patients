@@ -12,8 +12,9 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     //premier methode
     Page<Patient> findByNomContains(String keyword , Pageable pageable);
 
-    //deuxieme methode
+    //deuxieme methode  ajoute l'option si rien fourni on cherche tout les données
 
-    @Query("select p from Patient p where p.nom like :x")
+    @Query("select p from Patient p where :x = '' or p.nom like :x")
     Page<Patient> Chercher(@Param("x") String x, Pageable pageable);
+
 }
