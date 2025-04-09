@@ -110,7 +110,7 @@ Aperçu de la supression
 
 ![Page d'accueil paginé](/captures/img_5.png)
 
-Aperçu de la modification 
+Aperçu de la modification d'un patient avec les données prérempli
 
 ![Page d'accueil paginé](/captures/img_6.png)
 
