@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" layout:decorate="template1"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,6 +10,7 @@
 </head>
 <body>
 
+<div layout:fragment="content1">
 <div class="container mt-5">
     <div class="card shadow-lg">
         <div class="card-header bg-primary  text-white text-center">
@@ -64,6 +67,6 @@
         </div>
     </div>
 </div>
-
+</div>
 </body>
 </html>
