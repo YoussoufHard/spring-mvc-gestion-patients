@@ -101,6 +101,19 @@ Voici un aperçu de la page d'accueil du système après pagination :
 Voici un aperçu de la page d'accueil du système avec l'option de Recherche:
 
 ![Page d'accueil paginé](/captures/img_3.png)
+
+Voici un aperçu du systeme avec bare recherche et iconne 
+
+![Page d'accueil paginé](/captures/img_4.png)
+
+Aperçu de la supression 
+
+![Page d'accueil paginé](/captures/img_5.png)
+
+Aperçu de la modification 
+
+![Page d'accueil paginé](/captures/img_6.png)
+
 ---
 
 ### 🎨 Partie 2 : Templates et validation

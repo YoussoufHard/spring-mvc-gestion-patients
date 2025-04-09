@@ -43,7 +43,7 @@
                     </td>
                     <td th:text="${p.score}"></td>
                     <td class="text-center">
-                        <a href="/editPatient?id=${patient.id}" class="btn btn-warning btn-sm">
+                        <a th:href="@{/editPatient(id=${p.id})}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
                         <a onclick="return confirm('Etes-vous sûr de supprimer?')"
@@ -65,7 +65,5 @@
     </div>
 </div>
 
-<!-- Bootstrap JS (optionnel, pour les fonctionnalités interactives) -->
-<script src="/webjars/bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
