@@ -155,17 +155,9 @@ public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws
 
 ---
 
-## ✅ Suivi des commits
-📌 **Bonnes pratiques** :
-- Un commit **toutes les 30 minutes**
-- Un **push** après chaque modification importante
-- Un **dernier commit** à la fin du TP
-
----
-
 ## 📑 Auteur
-👨‍💻 **Ton Nom** - *Projet réalisé dans le cadre du TP Spring Boot*
+👨‍💻 **TANGARA YOUSSOUF** - *Projet réalisé dans le cadre du TP Spring Boot*
 
 ---
 
-💡 **Le projet sera amélioré progressivement avec les nouvelles fonctionnalités.** 🚀
+💡 **Le projet sera amélioré progressivement avec les nouvelles fonctionnalités.**
