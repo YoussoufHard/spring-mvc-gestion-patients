@@ -123,6 +123,7 @@ Voici la capture de la partie le template + validation (ici, je prends exemple d
 
 ![Page d'accueil paginé](/captures/img_7.png)
 
+Nb: J'utilise le meme formulaire pour l'ajout et la modification pour l'optimisation du code.  
 📌 Tutoriel : [📹 Partie 2](https://www.youtube.com/watch?v=eoBE745lDE0)
 
 ---
