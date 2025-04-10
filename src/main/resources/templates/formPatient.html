@@ -13,10 +13,11 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h5 th:text="${patient != null} ? 'Modifier Patient' : 'Ajouter Patient'"></h5>
+            <h5 th:if="${patient.id == null}">Ajouter Patient</h5>
+            <h5 th:if="${patient.id != null}">Modifier Patient</h5>
         </div>
         <div class="card-body">
-            <form method="post" th:action="@{/savePatient}" th:object="${patient}">
+            <form method="post" th:action="@{/savePatient(page=${page}, keyword=${keyword})}" th:object="${patient}">
                 <!-- ID caché pour la modification -->
                 <input type="hidden" th:field="*{id}"/>
 

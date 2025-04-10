@@ -117,8 +117,11 @@ Aperçu de la modification d'un patient avec les données prérempli
 ---
 
 ### 🎨 Partie 2 : Templates et validation
-📌 **Ajout d'un design Bootstrap pour rendre l'interface plus conviviale**  
-📌 **Validation des formulaires avec Spring Boot**
+ **Ajout d'un design Bootstrap pour rendre l'interface plus conviviale**  
+ **Validation des formulaires avec Spring Boot**       
+Voici la capture de la partie le template + validation (ici, je prends exemple de la page d'ajout, c'est de même pour la )
+
+![Page d'accueil paginé](/captures/img_7.png)
 
 📌 Tutoriel : [📹 Partie 2](https://www.youtube.com/watch?v=eoBE745lDE0)
 

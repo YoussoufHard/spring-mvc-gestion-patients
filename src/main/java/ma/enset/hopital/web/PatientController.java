@@ -50,19 +50,22 @@ public String index(Model model,
     }
 
     @GetMapping("/editPatient")
-    public String editPatient(@RequestParam Long id, Model model) {
+    public String editPatient(@RequestParam Long id, Model model, String keyword, int page) {
         Patient patient = patientRepository.findById(id).orElse(null);
         if (patient == null) return "redirect:/index?error=notfound";
         model.addAttribute("patient", patient);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
         return "formPatient";
     }
 
     @PostMapping("/savePatient")
-    public String savePatient(@Valid Patient patient, BindingResult bindingResult) {
+    public String savePatient(@Valid Patient patient, BindingResult bindingResult,
+                              @RequestParam(defaultValue = "0") int page,
+                              @RequestParam(defaultValue = "") String keyword) {
         if (bindingResult.hasErrors()) return "formPatient";
         patientRepository.save(patient);
-        return "redirect:/index";
+        return "redirect:/index?page="+page+"&keyword="+keyword;
     }
-
 
 }

@@ -46,7 +46,7 @@
                     </td>
                     <td th:text="${p.score}"></td>
                     <td class="text-center">
-                        <a th:href="@{/editPatient(id=${p.id})}" class="btn btn-warning btn-sm">
+                        <a th:href="@{/editPatient(id=${p.id}, keyword=${keyword}, page=${currentPage})}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
                         <a onclick="return confirm('Etes-vous sûr de supprimer?')"
