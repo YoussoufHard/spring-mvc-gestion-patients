@@ -157,7 +157,10 @@ public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws
 
 ## 📑 Auteur
 👨‍💻 **TANGARA YOUSSOUF** - *Projet réalisé dans le cadre du TP Spring Boot*   
-**Encadré par** : **Prof. Mohamed Youssfi**
+
+---
+
+  **Encadré par** : **Prof. Mohamed Youssfi**
 
 
 ---
