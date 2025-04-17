@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      lang="fr">
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+       lang="fr">
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}">Mon Site</title>
@@ -53,12 +54,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle"></i> Utilisateur
+                        <i class="bi bi-person-circle"></i>
+                        <span th:text="${#authentication != null ? #authentication.name : 'Invité'}"></span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> Mon Profil</a></li>
-                        <li><a class="dropdown-item" href="/settings"><i class="bi bi-gear-fill"></i> Paramètres</a></li>
-                        <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right"></i> Déconnexion</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i>Profile</a></li>
+<!--                        <li><a class="dropdown-item" href="/settings"><i class="bi bi-gear-fill"></i> Paramètres</a></li>-->
+                        <li>
+                            <form method="post" th:action="@{/logout}">
+                                <button class="dropdown-item" type="submit">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
