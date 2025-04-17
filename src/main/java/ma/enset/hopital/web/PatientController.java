@@ -62,7 +62,7 @@ public String index(Model model,
         return "formPatient";
     }
 
-    @PostMapping("/user/savePatient")
+    @PostMapping("/admin/savePatient")
     public String savePatient(@Valid Patient patient, BindingResult bindingResult,
                               @RequestParam(defaultValue = "0") int page,
                               @RequestParam(defaultValue = "") String keyword) {

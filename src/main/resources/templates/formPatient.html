@@ -17,7 +17,7 @@
             <h5 th:if="${patient.id != null}">Modifier Patient</h5>
         </div>
         <div class="card-body">
-            <form method="post" th:action="@{/savePatient(page=${page}, keyword=${keyword})}" th:object="${patient}">
+            <form method="post" th:action="@{/admin/savePatient(page=${page}, keyword=${keyword})}" th:object="${patient}">
                 <!-- ID caché pour la modification -->
                 <input type="hidden" th:field="*{id}"/>
 
@@ -55,7 +55,7 @@
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-save-fill"></i> Enregistrer
                     </button>
-                    <a href="/index" class="btn btn-secondary">Annuler</a>
+                    <a href="/user/index" class="btn btn-secondary">Annuler</a>
                 </div>
             </form>
         </div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+<div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;">
+    <div class="text-center mb-4">
+        <i class="bi bi-person-circle fs-1 text-primary"></i>
+        <h4 class="mt-2">Authentification</h4>
+    </div>
+
+    <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="username" name="username" required autofocus>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <div th:if="${param.error}" class="alert alert-danger text-center">
+            Identifiants incorrects. Veuillez réessayer.
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="remember-me" name="remember-me">
+            <label class="form-check-label" for="remember-me">Remember me</label>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Se connecter
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
