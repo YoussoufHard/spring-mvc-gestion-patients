@@ -130,28 +130,63 @@ Nb: J'utilise le meme formulaire pour l'ajout et la modification pour l'optimisa
 
 ### 🔒 Partie 3 : Sécurité avec Spring Security
 1️⃣ **InMemory Authentication** ([📹 Tutoriel](https://www.youtube.com/watch?v=7VqpC8UD1zM))  
+
+#### Objectif:
+
+L'objectif de cette partie est d'implémenter la sécurité dans une application web en utilisant **Spring Security**, avec une **authentification en mémoire (InMemory Authentication)** et une gestion des accès en fonction des rôles des utilisateurs.
+
+ Explication
+
+- Nous avons créé des utilisateurs en mémoire avec des mots de passe encodés.
+- Les utilisateurs peuvent être assignés à des rôles comme `USER` ou `ADMIN`, et l'accès aux pages est contrôlé en fonction de ces rôles.
+
+#### Configuration des utilisateurs
+
+```java
+@Bean
+public InMemoryUserDetailsManager inMemoryUserDetailsManager(PasswordEncoder passwordEncoder) {
+    String encodedPassword = passwordEncoder.encode("1234");
+
+    UserDetails user1 = User.withUsername("user1").password(encodedPassword).roles("USER").build();
+    UserDetails user2 = User.withUsername("user2").password(encodedPassword).roles("USER").build();
+    UserDetails admin = User.withUsername("admin").password(encodedPassword).roles("USER", "ADMIN").build();
+
+    return new InMemoryUserDetailsManager(user1, user2, admin);
+}
+```
+
+### Pages de l'application
+
+#### Page de Login Personnalisée
+
+Voici la page de login personnalisée avec un formulaire permettant aux utilisateurs de se connecter.
+
+
+![Capture de la page de login](/captures/img_8.png)
+
+#### Liste des patients en tant qu'Admin
+
+Quand un utilisateur avec le rôle **ADMIN** se connecte, il peut accéder à la liste complète des patients et effectuer des opérations de gestion.
+
+![Capture de la liste des patients Admin](/captures/img_10.png)
+
+#### Liste des patients en tant qu'Utilisateur Standard (USER)
+
+Quand un utilisateur avec le rôle **USER** se connecte, il peut consulter la liste des patients, mais avec des options limitées, sans pouvoir supprimer ou éditer des informations.
+
+![Capture de la liste des patients User](/captures/img_9.png)
+
+#### Page d'Erreur pour un Utilisateur Non Autorisé
+
+Quand un utilisateur tente d'accéder à une page ou une fonctionnalité qui nécessite des privilèges plus élevés (comme supprimer ou éditer un patient), il est redirigé vers une page d'erreur, indiquant qu'il n'a pas les permissions nécessaires.
+
+![Capture de la page d'accès refusé](/captures/img_11.png)
+
+
+
 2️⃣ **JDBC Authentication** ([📹 Tutoriel](https://www.youtube.com/watch?v=Haz3wLiQ5-0))  
 3️⃣ **UserDetailsService** ([📹 Tutoriel](https://www.youtube.com/watch?v=RTiS9ygyYs4))
 
-**Configuration de la sécurité** :
-```java
-@Bean
-public InMemoryUserDetailsManager inMemoryUserDetailsManager(PasswordEncoder passwordEncoder){
-    String encodedPassword = passwordEncoder.encode("1234");
-    return new InMemoryUserDetailsManager(
-        User.withUsername("user1").password(encodedPassword).roles("USER").build(),
-        User.withUsername("admin").password(encodedPassword).roles("USER","ADMIN").build()
-    );
-}
-@Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-    return httpSecurity
-        .formLogin(Customizer.withDefaults())
-        .authorizeHttpRequests(ar->ar.requestMatchers("/deletePatient/**").hasRole("ADMIN"))
-        .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
-        .build();
-}
-```
 
 ---
 
