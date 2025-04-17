@@ -129,7 +129,7 @@ Nb: J'utilise le meme formulaire pour l'ajout et la modification pour l'optimisa
 ---
 
 ### 🔒 Partie 3 : Sécurité avec Spring Security
-1️⃣ **InMemory Authentication** ([📹 Tutoriel](https://www.youtube.com/watch?v=7VqpC8UD1zM))  
+### 1️⃣ **InMemory Authentication** ([📹 Tutoriel](https://www.youtube.com/watch?v=7VqpC8UD1zM))  
 
 #### Objectif:
 
@@ -184,8 +184,69 @@ Quand un utilisateur tente d'accéder à une page ou une fonctionnalité qui né
 
 
 
-2️⃣ **JDBC Authentication** ([📹 Tutoriel](https://www.youtube.com/watch?v=Haz3wLiQ5-0))  
-3️⃣ **UserDetailsService** ([📹 Tutoriel](https://www.youtube.com/watch?v=RTiS9ygyYs4))
+### 2️⃣ **JDBC Authentication** ([📹 Tutoriel](https://www.youtube.com/watch?v=Haz3wLiQ5-0))
+
+Dans cette partie, nous utilisons **Spring Security avec JDBC Authentication** pour enregistrer automatiquement des utilisateurs dans la base de données au démarrage de l’application.
+
+####  Objectif
+
+Ajouter des utilisateurs dans la table `users` et leur associer des rôles via la table `authorities`.
+
+#### ⚙️ Implémentation
+
+```java
+@Bean
+CommandLineRunner commandLineRunner(JdbcUserDetailsManager jdbcUserDetailsManager) {
+    PasswordEncoder passwordEncoder = passwordEncoder();
+    return args -> {
+        jdbcUserDetailsManager.createUser(
+            User.withUsername("user11")
+                .password(passwordEncoder.encode("1234"))
+                .roles("USER")
+                .build()
+        );
+        jdbcUserDetailsManager.createUser(
+            User.withUsername("user22")
+                .password(passwordEncoder.encode("1234"))
+                .roles("USER")
+                .build()
+        );
+        jdbcUserDetailsManager.createUser(
+            User.withUsername("admin2")
+                .password(passwordEncoder.encode("1234"))
+                .roles("USER", "ADMIN")
+                .build()
+        );
+    };
+}
+```
+
+#### 🔐 Encoder le mot de passe
+
+```java
+@Bean
+PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+```
+
+#### 🧪 Résultat
+
+Après démarrage, les utilisateurs sont ajoutés dans les tables `users` et `authorities` automatiquement.
+
+voici la capture du bd
+
+![Capture de la base de donnée_tb_user](/captures/img_12.png)
+
+![Capture de la base de donnée_tb_authorities](/captures/img_13.png)
+
+voici la capture de la connexion avec les users de la base de donnée
+
+![connexion avec admin de la bd](/captures/img_14.png)
+
+
+### 3️⃣ **UserDetailsService** ([📹 Tutoriel](https://www.youtube.com/watch?v=RTiS9ygyYs4))
+
 
 
 ---
