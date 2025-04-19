@@ -247,7 +247,34 @@ voici la capture de la connexion avec les users de la base de donnée
 
 ### 3️⃣ **UserDetailsService** ([📹 Tutoriel](https://www.youtube.com/watch?v=RTiS9ygyYs4))
 
+Cette partie met en œuvre l'authentification basée sur une implémentation personnalisée de `UserDetailsService`, permettant la gestion des utilisateurs depuis une base de données, via le service `AccountService`.
 
+#### Fonctionnalités principales :
+- Authentification personnalisée via `UserDetailsServiceImpl`
+- Intégration avec Spring Security (`SecurityConfig`)
+- Gestion des rôles utilisateurs (`AppUser`, `AppRole`)
+- Page de login personnalisée
+- Gestion des accès (`/admin/**`, `/user/**`)
+- Gestion des erreurs (page "non autorisé")
+
+---
+
+#### 📁 Structure principale :
+
+- `SecurityConfig.java` : Configuration des règles de sécurité.
+- `UserDetailsServiceImpl.java` : Implémentation de `UserDetailsService`, charge les utilisateurs depuis la base.
+- `AccountService.java / Impl` : Service métier pour gérer les utilisateurs et rôles.
+- `AppUser` / `AppRole` : Entités représentant les utilisateurs et leurs rôles.
+- `login.html` : Page de connexion personnalisée.
+- `notAuthorized.html` : Page affichée en cas d’accès refusé.
+
+voici la capture des table de la partie personalisé et app_user (pour les utilisateurs)
+
+![les nouvelle tables personnalisées](/captures/img_15.png)
+
+voici la capture de la connexion avec les users de la personnalisation app_user
+
+![connexion avec user de app_user](/captures/img_16.png)
 
 ---
 

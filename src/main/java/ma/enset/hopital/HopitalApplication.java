@@ -2,6 +2,7 @@ package ma.enset.hopital;
 
 import ma.enset.hopital.entities.Patient;
 import ma.enset.hopital.repository.PatientRepository;
+import ma.enset.hopital.security.services.AccountService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,8 +32,9 @@ public class HopitalApplication {
 		};
 	}
 
-	@Bean
-	CommandLineRunner commandLineRunner(JdbcUserDetailsManager jdbcUserDetailsManager, PasswordEncoder passwordEncoder) {
+	// @Bean
+	CommandLineRunner commandLineRunner(JdbcUserDetailsManager jdbcUserDetailsManager) {
+		 PasswordEncoder passwordEncoder=passwordEncoder(); // Sera injecté automatiquement
 		return args -> {
 			if (!jdbcUserDetailsManager.userExists("user11")) {
 				UserDetails user1 = User.withUsername("user11")
@@ -58,5 +60,28 @@ public class HopitalApplication {
 				jdbcUserDetailsManager.createUser(admin);
 			}
 		};
+	}
+
+	//@Bean
+	CommandLineRunner commandLineRunnerUserDetails(AccountService accountService) {
+		PasswordEncoder passwordEncoder=passwordEncoder(); // Sera injecté automatiquement
+		return args -> {
+			accountService.addNewRole("USER") ;
+			accountService.addNewRole("ADMIN") ;
+			accountService.addNewUser("user1","1234","user1@gmail.com","1234") ;
+			accountService.addNewUser("user2","1234","user2@gmail.com","1234") ;
+			accountService.addNewUser("admin","1234","admin@gmail.com","1234") ;
+
+			accountService.addRoleToUser("user1","USER");
+			accountService.addRoleToUser("user2","USER");
+			accountService.addRoleToUser("admin","USER");
+			accountService.addRoleToUser("admin","ADMIN");
+
+		} ;
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }

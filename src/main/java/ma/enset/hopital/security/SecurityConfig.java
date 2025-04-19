@@ -1,10 +1,13 @@
 package ma.enset.hopital.security;
 
+import lombok.AllArgsConstructor;
+import ma.enset.hopital.security.services.UserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -16,16 +19,19 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfig {
 
-    @Bean
+    private UserDetailServiceImpl userDetailServiceImpl;
+    private PasswordEncoder passwordEncoder; // Sera injecté automatiquement
+   // @Bean
     public JdbcUserDetailsManager jdbcUserDetailsManager (DataSource dataSource) {
         return new JdbcUserDetailsManager(dataSource) ;
     }
 
 
     // @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager(PasswordEncoder passwordEncoder) {
+    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         String encodedPassword = passwordEncoder.encode("1234");
         System.out.println("Password Encoded : " + encodedPassword);
 
@@ -57,11 +63,8 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception
                         .accessDeniedPage("/notAuthorized")
                 )
+                .userDetailsService(userDetailServiceImpl)
                 .build();
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }
